@@ -4,7 +4,7 @@ import { fetchWrapper } from '../helpers/api/fetch-api';
 
 const { publicRuntimeConfig } = getConfig();
 const baseUrl = `http://localhost:8000`;
-const userSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('user')));
+const userSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('user') || ''));
 
 const login = (email: string, password: string) => {
     return fetchWrapper.post(`${baseUrl}/auth/login`, { email, password })
